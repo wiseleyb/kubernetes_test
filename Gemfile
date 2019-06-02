@@ -5,8 +5,6 @@ ruby '2.2.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 gem 'pg'
 
@@ -59,6 +57,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+
+  # Docker seems to hate sqlite - couldn't get it to work without commenting
+  # this out. It's not core to this test so, fuck it. You almost definitely
+  # use a real db in your specs.
+  # gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
