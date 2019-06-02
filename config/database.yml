@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 3
+  host: kubernetes-test.cly0cxysh0so.us-east-1.rds.amazonaws.com
+  port: 5432
+  database: kubernetes_test
+  username: kubadmin
+  password: mypassword
+
+development:
+  <<: *default
+
+test:
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: db/test.sqlite3
+
+production:
+  <<: *default
